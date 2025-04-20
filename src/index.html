@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Link to your CSS file will be added by webpack -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            <h1>Todo List</h1>
+        </div>
+    </header>
+    <div class="main-container">
+        <nav class="sidebar">
+            <ul>
+                <li class="active" data-view="inbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V7h14v12zm-2-7H7v-2h10v2z"/></svg>
+                    Inbox
+                </li>
+                <li data-view="today">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
+                    Today
+                </li>
+                <li data-view="this-week">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>
+                    This week
+                </li>
+            </ul>
+            <div class="projects-section">
+                <h2>Projects</h2>
+                <ul id="projectList"></ul>
+                <button class="add-project-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 6v12m6-6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Add Project
+                </button>
+            </div>
+        </nav>
+        <main class="content">
+            <h2 id="contentTitle">Inbox</h2>
+            <ul id="taskList"></ul>
+            <button class="add-task-btn">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 6v12m6-6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                 Add Task
+            </button>
+             <div class="input-container" style="display: none;">
+                <input type="text" id="taskInput" placeholder="Task Title...">
+                <textarea id="taskDescription" placeholder="Description (optional)..."></textarea>
+                <input type="date" id="taskDueDate">
+                <select id="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button id="addTaskConfirmBtn">Add Task</button>
+                <button id="cancelTaskBtn">Cancel</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

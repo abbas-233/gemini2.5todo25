@@ -1,0 +1,729 @@
+/* style.css - Modernized Styles with More Color */
+
+/* --- Variables --- */
+:root {
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    /* Core Palette */
+    --color-bg: #f8f9fa; /* Light grey background */
+    --color-sidebar-bg: #ffffff;
+    --color-content-bg: #ffffff;
+    --color-header-bg: #34495e; /* Dark slate blue header */
+    --color-border: #dee2e6; /* Lighter border */
+    --color-shadow: rgba(0, 0, 0, 0.06);
+
+    /* Text Colors */
+    --color-text-primary: #2c3e50; /* Darker slate blue */
+    --color-text-secondary: #86909a; /* Grey */
+    --color-text-light: #ffffff;
+    --color-text-accent: var(--color-primary);
+
+    /* Primary Accent (Blue) */
+    --color-primary: #3498db;
+    --color-primary-light: #a9d6f5; /* Lighter blue for backgrounds/hovers */
+    --color-primary-dark: #2980b9; /* Darker blue for hover/active */
+
+    /* Secondary Accent (Teal) */
+    --color-secondary: #1abc9c; /* Teal */
+    --color-secondary-light: #a3e4d7;
+    --color-secondary-dark: #16a085;
+
+    /* Semantic Colors */
+    --color-success: #2ecc71; /* Green */
+    --color-success-light: #abebc6;
+    --color-success-dark: #27ae60;
+    --color-danger: #e74c3c; /* Red */
+    --color-danger-light: #f5b7b1;
+    --color-danger-dark: #c0392b;
+    --color-warning: #f39c12; /* Orange/Yellow */
+    --color-warning-light: #fceab7;
+    --color-warning-dark: #d68910;
+
+    /* Priority Colors */
+    --priority-low: var(--color-success);
+    --priority-medium: var(--color-warning);
+    --priority-high: var(--color-danger);
+
+    /* UI Elements */
+    --border-radius: 6px;
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --transition-speed: 0.2s;
+}
+
+/* --- Basic Reset & Body --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--color-header-bg);
+    color: var(--color-text-light);
+    padding: var(--spacing-s) var(--spacing-l);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--color-shadow);
+    z-index: 10;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+}
+
+header .logo svg {
+    fill: var(--color-text-light);
+}
+
+header h1 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+/* --- Main Container --- */
+.main-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    background-color: var(--color-sidebar-bg);
+    width: 260px;
+    padding: var(--spacing-l);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-bottom: var(--spacing-l);
+}
+
+.sidebar li {
+    padding: var(--spacing-s) var(--spacing-m);
+    margin-bottom: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    color: var(--color-text-secondary);
+}
+
+.sidebar li svg {
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) ease;
+    fill: currentColor;
+}
+
+/* Hover state for general sidebar items */
+.sidebar ul:not(#projectList) li:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+/* Active state for general sidebar items */
+.sidebar ul:not(#projectList) li.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+/* Hover state for project list items */
+#projectList li:hover {
+    background-color: var(--color-secondary-light);
+    color: var(--color-secondary-dark);
+}
+
+/* Active state for project list items */
+#projectList li.active {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.sidebar li.active svg {
+    opacity: 1;
+}
+
+.projects-section {
+    margin-top: var(--spacing-m);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-l);
+}
+
+.projects-section h2 {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-m);
+    color: var(--color-text-secondary);
+}
+
+.add-project-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--spacing-s) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    font-size: 0.95em;
+    font-family: inherit;
+    transition: color var(--transition-speed) ease;
+}
+
+.add-project-btn svg {
+    stroke: currentColor;
+    width: 16px;
+    height: 16px;
+}
+
+/* Use secondary accent for add project button hover */
+.add-project-btn:hover {
+    color: var(--color-secondary);
+}
+
+/* --- Content Area --- */
+.content {
+    flex-grow: 1;
+    padding: var(--spacing-l) var(--spacing-xl);
+    background-color: var(--color-content-bg);
+    overflow-y: auto;
+}
+
+.content h2#contentTitle {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: var(--spacing-l);
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-m);
+}
+
+/* --- Task List --- */
+#taskList {
+    list-style: none;
+    margin-bottom: var(--spacing-l);
+    display: grid;
+    gap: var(--spacing-m);
+}
+
+/* Task Item Card */
+#taskList li {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+#taskList li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-color: #c0c9d1;
+    background-color: #fdfdfe;
+}
+
+/* --- Task Top Row --- */
+.task-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-m);
+    cursor: pointer;
+}
+
+/* --- Task Content --- */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-m);
+    flex: 1;
+    min-width: 0;
+}
+
+.task-content span {
+    flex-grow: 1;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.due-date {
+    font-size: 0.85em;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* --- Priority Styling --- */
+/* Replace dropdown with a colored tag/badge */
+.priority-select {
+    display: none; /* Hide the original select */
+}
+
+/* Add a pseudo-element or a dedicated span for the priority tag */
+#taskList li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px; /* Width of the color bar */
+    background-color: var(--color-text-secondary); /* Default color */
+}
+
+#taskList li.priority-low::before {
+    background-color: var(--priority-low);
+}
+#taskList li.priority-medium::before {
+    background-color: var(--priority-medium);
+}
+#taskList li.priority-high::before {
+    background-color: var(--priority-high);
+}
+
+/* Adjust padding to account for the ::before element on the top row */
+.task-top-row {
+    padding-left: calc(var(--spacing-m) + 10px);
+}
+
+/* Add click handler to the task text or a dedicated icon later to change priority */
+/* For now, the color bar indicates priority */
+
+/* --- Task Description View --- */
+.task-description-view {
+    padding: 0 var(--spacing-m) var(--spacing-m) calc(var(--spacing-m) + 10px);
+    color: var(--color-text-secondary);
+    font-size: 0.9em;
+    line-height: 1.5;
+    border-top: 1px dashed var(--color-border);
+    margin-top: var(--spacing-m);
+}
+
+/* Expanded state styling */
+#taskList li.expanded {
+}
+
+#taskList li.expanded .task-top-row {
+    padding-bottom: var(--spacing-s);
+}
+
+/* --- Task Buttons --- */
+.task-buttons {
+    display: flex;
+    gap: var(--spacing-s);
+    flex-shrink: 0;
+}
+
+/* Apply common styles BUT NOT background: none; to edit buttons here */
+.task-buttons button, 
+.task-edit-buttons button { 
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    color: var(--color-text-secondary); /* Default icon color for view buttons */
+}
+
+/* Specifically set background: none only for view mode icon buttons */
+.task-buttons button {
+    background: none; 
+}
+
+.task-buttons button svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.task-buttons button:hover {
+    background-color: var(--color-bg);
+}
+
+.complete-btn {
+    color: var(--color-success);
+}
+.complete-btn:hover {
+    color: var(--color-success-dark);
+    background-color: var(--color-success-light);
+}
+
+/* Edit button style */
+.edit-btn {
+     color: var(--color-primary);
+}
+.edit-btn:hover {
+     color: var(--color-primary-dark);
+     background-color: var(--color-primary-light);
+}
+
+.delete-btn {
+    color: var(--color-danger);
+}
+.delete-btn:hover {
+    color: var(--color-danger-dark);
+    background-color: var(--color-danger-light);
+}
+
+/* Completed Task Styling */
+#taskList li.completed {
+    background-color: #f8f9fa;
+    opacity: 0.65;
+    box-shadow: none;
+    border-color: var(--color-border);
+}
+
+#taskList li.completed .task-description-view {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+#taskList li.completed::before {
+    opacity: 0.5;
+}
+
+/* --- Add Task Button & Input Container --- */
+.add-task-btn {
+    background: none;
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--spacing-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-s);
+    font-size: 1em;
+    font-family: inherit;
+    margin-bottom: var(--spacing-l);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+    width: 100%;
+}
+
+.add-task-btn svg {
+    stroke: currentColor;
+    width: 18px;
+    height: 18px;
+}
+
+/* Use primary accent for add task button hover */
+.add-task-btn:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-light);
+    border-style: solid;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-l);
+    background-color: #ffffff;
+    padding: var(--spacing-m);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px var(--color-shadow);
+    align-items: center;
+}
+
+.input-container input[type="text"],
+.input-container input[type="date"],
+.input-container select {
+    font-family: inherit;
+    padding: var(--spacing-s) var(--spacing-m);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.input-container input[type="text"] {
+    flex-grow: 1;
+}
+
+.input-container input:focus,
+.input-container select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Input Container Priority Select */
+.input-container select#taskPriority {
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2386909a%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-m) top 50%;
+    background-size: .65em auto;
+    padding-right: var(--spacing-xl);
+    color: var(--color-text-secondary);
+}
+
+/* Style select based on value when adding */
+.input-container select#taskPriority[value="low"] { color: var(--priority-low); }
+.input-container select#taskPriority[value="medium"] { color: var(--priority-medium); }
+.input-container select#taskPriority[value="high"] { color: var(--priority-high); }
+
+/* Input Container Buttons */
+#addTaskConfirmBtn,
+#cancelTaskBtn {
+    padding: var(--spacing-s) var(--spacing-m);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    flex-shrink: 0;
+    color: white;
+}
+
+#addTaskConfirmBtn {
+    background-color: var(--color-success);
+}
+
+#addTaskConfirmBtn:hover {
+    background-color: var(--color-success-dark);
+}
+
+#cancelTaskBtn {
+    background-color: var(--color-danger);
+}
+
+#cancelTaskBtn:hover {
+    background-color: var(--color-danger-dark);
+}
+
+/* --- Utility --- */
+.hidden {
+    display: none;
+}
+
+/* --- Task Edit Mode --- */
+.task-edit-container {
+    padding: var(--spacing-m);
+    padding-left: calc(var(--spacing-m) + 10px); /* Match view mode left padding */
+    display: flex; /* Changed from none */
+    flex-direction: column;
+    gap: var(--spacing-s);
+    /* Initially hidden via JS */
+    /* display: none; */ 
+}
+
+.edit-task-title,
+.edit-task-description {
+    font-family: inherit;
+    font-size: 1em;
+    padding: var(--spacing-s);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    width: 100%; /* Take full width */
+}
+
+.edit-task-title:focus,
+.edit-task-description:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.edit-task-description {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 60px;
+}
+
+.task-edit-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: var(--spacing-s);
+    margin-top: var(--spacing-s);
+}
+
+.task-edit-buttons button {
+    /* Inherits common styles from above */
+    padding: var(--spacing-xs) var(--spacing-m);
+    font-size: 0.9em;
+    font-weight: 500;
+    color: white; /* Text color for Save/Cancel */
+    /* Background colors applied by .save-btn & .cancel-btn */
+}
+
+.save-btn {
+    background-color: var(--color-success);
+}
+.save-btn:hover {
+    background-color: var(--color-success-dark);
+}
+
+.cancel-btn {
+    background-color: var(--color-text-secondary);
+}
+.cancel-btn:hover {
+    background-color: var(--color-text-primary);
+}
+
+/* Hide edit container when completed */
+#taskList li.completed .task-edit-container {
+    display: none;
+}
+/* Show view container when completed (overrides editing state if somehow active) */
+#taskList li.completed .task-view-container {
+    display: block;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        height: auto;
+        padding: var(--spacing-m);
+    }
+
+     .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: var(--spacing-m);
+     }
+
+     .sidebar li {
+         margin-bottom: var(--spacing-s);
+         flex-basis: content;
+     }
+
+    .projects-section {
+        margin-top: 0;
+        padding-top: var(--spacing-m);
+        border-top: none;
+    }
+
+    .content {
+        padding: var(--spacing-l);
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #taskList li {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    /* Adjust color bar for vertical layout */
+    #taskList li::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: auto;
+        height: 5px;
+    }
+
+    .task-top-row {
+        padding: var(--spacing-m);
+        padding-top: calc(var(--spacing-m) + 5px);
+    }
+
+    .task-content {
+        width: 100%;
+        flex-wrap: wrap;
+         gap: var(--spacing-s);
+    }
+
+    .task-content span {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .task-description-view {
+        padding: 0 var(--spacing-m) var(--spacing-m) var(--spacing-m);
+        margin-top: var(--spacing-s);
+    }
+
+    .task-buttons {
+        align-self: flex-end;
+        margin-top: var(--spacing-s);
+    }
+
+    /* Adjust edit container padding */
+     .task-edit-container {
+         padding: var(--spacing-m);
+         padding-top: calc(var(--spacing-m) + 5px); /* Account for top bar */
+     }
+
+}
+
+/* Styling for the new Project Selector in Edit Mode */
+.edit-task-project {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    margin-top: var(--spacing-m);
+    margin-bottom: var(--spacing-s);
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+}
+
+.edit-task-project label {
+    white-space: nowrap; /* Prevent label wrapping */
+}
+
+.edit-task-project select {
+    flex-grow: 1; /* Allow select to take available space */
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-s);
+    font-family: inherit;
+    font-size: 0.95em;
+    background-color: var(--color-input-bg);
+    color: var(--color-text-primary);
+}
